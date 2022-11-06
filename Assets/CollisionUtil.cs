@@ -115,18 +115,12 @@ namespace Assets
 
             bool hasOverlap = false;
 
-            try
+          
+            if (ProjectionHasOverlapSphereAndCube(a.Transform.position, b.Transform.position, allAxes, cubeVertices, radius, collisionInfo))
             {
-                if (ProjectionHasOverlapSphereAndCube(a.Transform.position, b.Transform.position, allAxes, cubeVertices, radius, collisionInfo))
-                {
-                    collisionInfo.isFromA = true;
-                    hasOverlap = true;
-                }
-            } catch(Exception ex)
-            {
-                Debug.Log(ex.Message);
+                collisionInfo.isFromA = true;
+                hasOverlap = true;
             }
-
             //else if (ProjectionHasOverlapSphereAndCube(b.Transform.position, a.Transform.position, allAxes, cubeVertices, radius, collisionInfo))
             //{
             //    //2번 체크할 이유가 있나?
@@ -202,7 +196,6 @@ namespace Assets
 
                 if (overlap <= 0)
                 {
-                    Debug.Log("no collision");
                     return false;
                 }
             }

@@ -106,6 +106,13 @@ public class Cube : MonoBehaviour
 
     }
 
+    public bool IsSlope()
+    {
+        Quaternion rotation = this.transform.rotation;
+        bool isSlope = rotation.eulerAngles.y > 0f || rotation.eulerAngles.y > 0f || rotation.eulerAngles.z > 0f;
+        return isSlope;
+    }
+
     private void Tint()
     {
         GetComponent<Renderer>().material.SetColor("_Color", Hit ? Color.red : Color.white);
